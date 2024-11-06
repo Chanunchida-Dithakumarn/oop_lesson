@@ -13,8 +13,8 @@ class Account:
             self.balance = self.balance - amount
 
     def __str__(self):
-        return (f"{self.account_num}, {self.type}, "
-                f"{self.account_name}, {self.balance}")
+        return ('{' + str(self.account_num) + ',' + str(self.type) + ','
+                + str(self.account_name) + ',' + str(self.balance) + '}')
 
 
 class AccountDB:
@@ -38,7 +38,9 @@ class AccountDB:
         for account in self.account_database:
             if account.account_num == account_num:
                 return account
-        return None
+        # return None
+        print("Not found this account")
+        exit()
 
     def __str__(self):
         text = ''
@@ -63,5 +65,5 @@ my_account_DB.search_public("0003").deposit(50)
 print(my_account_DB)
 my_account_DB.search_public("0003").withdraw(100)
 print(my_account_DB)
-# my_account_DB.search_public("0010").deposit(50)
-# print(my_account_DB)
+my_account_DB.search_public("0010").deposit(50)
+print(my_account_DB)
